@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
   <title>Contact Form</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="container">
-    <form>
+    <form onsubmit="sendEmail()">
       <h3>Get In Touch!</h3>
       <input type="text" id="name" placeholder="Your Name" required>
       <input type="email" id="email" placeholder="Email Address" required>
@@ -19,5 +21,21 @@
     </form>
   </div>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    function sendEmail() {
+      Email.send({
+        Host: "smtp.yourisp.com",
+        Username: "username",
+        Password: "password",
+        To: 'them@website.com',
+        From: "you@isp.com",
+        Subject: "This is the subject",
+        Body: "And this is the body"
+      }).then(
+        message => alert(message)
+      );
+    }
+  </script>
 </body>
+
 </html>
